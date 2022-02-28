@@ -31,7 +31,9 @@ lipDT
 |--- Saved 
 |   |--- AccuaryEfficiency
 |   |--- convergency
+|   |--- IA
 |   |--- MultiLayers
+|   |--- MyRandom
 |   |--- WeightBias
 |
 |--- accuaryEfficiency.py (run this file for accuary & efficiency experiemnts)
@@ -39,6 +41,7 @@ lipDT
 |--- convergency.py (run this file for convergency experiemnts)
 |
 |--- experiments.py
+|--- IA.py
 |
 |--- multiLayers.py (run this file for multi-layers experiments)
 |
@@ -51,7 +54,7 @@ lipDT
 |--- weightBias.py (run this file for weight & bias experiemnts)
 ```
 
-## Experiments corresponding to the Paper and Appendix
+## Experiments
 ### Accuary & Efficiency
 #### Code file: 
 - accuaryEfficiency.py
@@ -129,6 +132,7 @@ NaiveUB ReLU: value - 107.7006607055664 timing - 75900
 RandomLB ReLU: value - 0.3481535315513611 timing - 177969900
 SeqLip ReLU: value - 0.670467323694055 timing - 4930500
 ```
+
 #### Saved Information
 - folder: Saved/AccuaryEfficiency
 
@@ -150,6 +154,8 @@ SeqLip ReLU: value - 0.670467323694055 timing - 4930500
 #### Saved Information
 - folder: Saved/MultiLayers
 
+### Influence Analysis
+- IntervalBisect/Interval_cpp/test_sigmoid01
 
 ## Environment & Dependency & Other information
 ### EnvironmentL
