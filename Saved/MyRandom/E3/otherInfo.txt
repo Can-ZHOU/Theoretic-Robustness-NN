@@ -1,0 +1,25 @@
+experimentIndex: 3
+radius_inputs: 1
+interval_result_ReLU: interval([1.115832895924889, 1.3386268161024404])
+interval_result_Sigmoid: 0.0
+lipMIP_result: 1.1545707794715319
+ZLip_result: 1.3156167268753052
+interval_time_ReLU: 72760419700
+interval_time_Sigmoid: 0
+lipMIP_time: 12145600
+ZLip_time: 2857100
+otherMethodsResults: [(1092273000, 1.1545687913894653), (714900, 1.338626742362976), (89000, 2.4771435260772705), (137174600, 1.115832805633545), (3587600, 0.6604053974151611)]
+dataIndex: 2
+randomSeed: 0
+input: [-4.206246725574425, -3.062387273570235, -5.9764423567379446, 3.3467213688351887]
+layer_sizes: [4, 4, 2]
+stop_conditions: [1e-06, 10, 3000, 10]
+needBisectect: True
+interval ReLU: value - interval([1.115832895924889, 1.3386268161024404]) timing - 72760419700
+lipMIP ReLU: value - 1.1545707794715319 timing - 12145600
+ZLip ReLU: value - 1.3156167268753052 timing - 2857100
+CLEVER ReLU: value - 1.1545687913894653 timing - 1092273000
+FastLip ReLU: value - 1.338626742362976 timing - 714900
+NaiveUB ReLU: value - 2.4771435260772705 timing - 89000
+RandomLB ReLU: value - 1.115832805633545 timing - 137174600
+SeqLip ReLU: value - 0.6604053974151611 timing - 3587600

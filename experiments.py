@@ -98,6 +98,29 @@ class Experiments:
         self.input = np.linalg.solve(A, B).tolist()
         return self.input
 
+    def nearBoundary_move(self, shift):
+        need = []
+        for name, param in self.network.named_parameters():
+            need.append(param.data)
+
+        W1 = need[0].data.numpy()
+        b1 = need[1].data.numpy()
+        dataLength = self.layer_sizes[0]
+        A = np.zeros((dataLength, dataLength))
+        B = np.zeros(dataLength)
+        bias = -1 * b1
+
+        for i in range(dataLength):
+            B[i] = bias[i]
+            for j in range(dataLength):
+                A[i][j] = W1[i][j]
+
+        self.input = np.linalg.solve(A, B).tolist()
+        for i in range(len(self.input)):
+            self.input[i] = self.input[i] + shift
+
+        return self.input
+
     def saveNetwork(self, folderName, networkName):
         path = "Saved/"+ folderName + "/E" + str(self.experimentIndex)
         if not os.path.exists(path):
@@ -114,54 +137,86 @@ class Experiments:
         if not os.path.exists(path):
             os.makedirs(path)
 
-        # save network parameters
-        with open(path+"/weights.csv", 'ab') as fw:
-            with open(path+"/bias.csv", 'ab') as fb:
-                for name, param in self.network.named_parameters():
-                    tmp = param.data.numpy()
-                    if "weight" in name:
-                        np.savetxt(fw, tmp, delimiter=",")
-                        np.savetxt(fw, [[]], delimiter=",")
+        # print(self.network.named_parameters()[""])
 
-                    if "bias" in name:
-                        np.savetxt(fb, tmp, delimiter=",")
-                        np.savetxt(fb, [[]], delimiter=",")
+        # # Convert parameters to numpy
+        # W1 = self.network.net.1.weight.data.numpy()
+        # b1 = self.network.net.1.bias.data.numpy()
+        # W2 = self.network.net.3.weight.data.numpy()
+
+        # # Saving as csv
+        # path = "parameters/E" + str(self.experimentIndex)
+        # if not os.path.exists(path):
+        #     os.makedirs(path)
+        np.savetxt(path+"/X0.csv", [self.input], delimiter=",")
+        # np.savetxt(path+"/W1.csv", W1, delimiter=",")
+        # np.savetxt(path+"/W2.csv", W2, delimiter=",")
+        # np.savetxt(path+"/b1.csv", [b1], delimiter=",")
+
+        count = 0
+        for name, param in self.network.named_parameters():
+            tmp = param.data.numpy()
+            if count == 0:
+                np.savetxt(path+"/W1.csv", tmp, delimiter=",")
+            elif count == 1:
+                np.savetxt(path+"/b1.csv", [tmp], delimiter=",")
+            elif count == 2:
+                np.savetxt(path+"/W2.csv", tmp, delimiter=",")
+            count  += 1
+
+
+        # # save network parameters
+        # with open(path+"/weights.csv", 'ab') as fw:
+        #     with open(path+"/bias.csv", 'ab') as fb:
+        #         for name, param in self.network.named_parameters():
+        #             tmp = param.data.numpy()
+        #             print(name)
+        #             if "weight" in name:
+        #                 np.savetxt(fw, tmp, delimiter=",")
+        #                 np.savetxt(fw, ['###'], delimiter=",", fmt="%s")
+
+        #             if "bias" in name:
+        #                 np.savetxt(fb, tmp, delimiter=",")
+        #                 np.savetxt(fb, ['###'], delimiter=",", fmt="%s")
+
+        # with open(path+"/inputs.csv", 'wb') as fi:
+        #     np.savetxt(fi, [self.input], delimiter=",")
 
         # save other experiment info
-        otherInfo = ""
-        otherInfo += 'experimentIndex: ' + str(self.experimentIndex) + "\n"
-        otherInfo += 'radius_inputs: ' + str(self.radius_inputs) + "\n"
-        otherInfo += 'interval_result_ReLU: ' + str(self.interval_result_ReLU) + "\n"
-        otherInfo += 'interval_result_Sigmoid: ' + str(self.interval_result_Sigmoid) + "\n"
-        otherInfo += 'lipMIP_result: ' + str(self.lipMIP_result) + "\n"
-        otherInfo += 'ZLip_result: ' + str(self.ZLip_result) + "\n"
-        otherInfo += 'interval_time_ReLU: ' + str(self.interval_time_ReLU) + "\n"
-        otherInfo += 'interval_time_Sigmoid: ' + str(self.interval_time_Sigmoid) + "\n"
-        otherInfo += 'lipMIP_time: ' + str(self.lipMIP_time) + "\n"
-        otherInfo += 'ZLip_time: ' + str(self.ZLip_time) + "\n"
-        otherInfo += 'otherMethodsResults: '+ str(self.otherMethodsResults) + "\n"
-        otherInfo += 'dataIndex: ' + str(self.dataIndex) + "\n"
-        otherInfo += 'randomSeed: ' + str(self.randomSeed) + "\n"
-        otherInfo += 'input: ' + str(self.input) + "\n"
-        otherInfo += 'layer_sizes: '+ str(self.layer_sizes) + "\n"
-        otherInfo += 'stop_conditions: '+ str(self.stop_conditions) + "\n"
-        otherInfo += 'needBisectect: '+ str(self.needBisect) + "\n"
+        # otherInfo = ""
+        # otherInfo += 'experimentIndex: ' + str(self.experimentIndex) + "\n"
+        # otherInfo += 'radius_inputs: ' + str(self.radius_inputs) + "\n"
+        # otherInfo += 'interval_result_ReLU: ' + str(self.interval_result_ReLU) + "\n"
+        # otherInfo += 'interval_result_Sigmoid: ' + str(self.interval_result_Sigmoid) + "\n"
+        # otherInfo += 'lipMIP_result: ' + str(self.lipMIP_result) + "\n"
+        # otherInfo += 'ZLip_result: ' + str(self.ZLip_result) + "\n"
+        # otherInfo += 'interval_time_ReLU: ' + str(self.interval_time_ReLU) + "\n"
+        # otherInfo += 'interval_time_Sigmoid: ' + str(self.interval_time_Sigmoid) + "\n"
+        # otherInfo += 'lipMIP_time: ' + str(self.lipMIP_time) + "\n"
+        # otherInfo += 'ZLip_time: ' + str(self.ZLip_time) + "\n"
+        # otherInfo += 'otherMethodsResults: '+ str(self.otherMethodsResults) + "\n"
+        # otherInfo += 'dataIndex: ' + str(self.dataIndex) + "\n"
+        # otherInfo += 'randomSeed: ' + str(self.randomSeed) + "\n"
+        # otherInfo += 'input: ' + str(self.input) + "\n"
+        # otherInfo += 'layer_sizes: '+ str(self.layer_sizes) + "\n"
+        # otherInfo += 'stop_conditions: '+ str(self.stop_conditions) + "\n"
+        # otherInfo += 'needBisectect: '+ str(self.needBisect) + "\n"
 
-        allResults = ""
-        allResults += "interval ReLU: value - " + str(self.interval_result_ReLU)
-        allResults += " timing - " + str(self.interval_time_ReLU) + "\n" 
-        allResults += "lipMIP ReLU: value - " + str(self.lipMIP_result) + " timing - " + str(self.lipMIP_time) + "\n"  
-        allResults += "ZLip ReLU: value - " + str(self.ZLip_result) + " timing - " + str(self.ZLip_time) + "\n"  
-        allResults += "CLEVER ReLU: value - " + str(self.otherMethodsResults[0][1]) + " timing - " +  str(self.otherMethodsResults[0][0]) + "\n"  
-        allResults += "FastLip ReLU: value - " + str(self.otherMethodsResults[1][1]) + " timing - " + str(self.otherMethodsResults[1][0]) + "\n"  
-        allResults += "NaiveUB ReLU: value - " + str(self.otherMethodsResults[2][1]) + " timing - " + str(self.otherMethodsResults[2][0]) + "\n"  
-        allResults += "RandomLB ReLU: value - " + str(self.otherMethodsResults[3][1]) + " timing - " + str(self.otherMethodsResults[3][0]) + "\n"  
-        allResults += "SeqLip ReLU: value - " + str(self.otherMethodsResults[4][1]) + " timing - " + str(self.otherMethodsResults[4][0])
+        # allResults = ""
+        # allResults += "interval ReLU: value - " + str(self.interval_result_ReLU)
+        # allResults += " timing - " + str(self.interval_time_ReLU) + "\n" 
+        # allResults += "lipMIP ReLU: value - " + str(self.lipMIP_result) + " timing - " + str(self.lipMIP_time) + "\n"  
+        # allResults += "ZLip ReLU: value - " + str(self.ZLip_result) + " timing - " + str(self.ZLip_time) + "\n"  
+        # allResults += "CLEVER ReLU: value - " + str(self.otherMethodsResults[0][1]) + " timing - " +  str(self.otherMethodsResults[0][0]) + "\n"  
+        # allResults += "FastLip ReLU: value - " + str(self.otherMethodsResults[1][1]) + " timing - " + str(self.otherMethodsResults[1][0]) + "\n"  
+        # allResults += "NaiveUB ReLU: value - " + str(self.otherMethodsResults[2][1]) + " timing - " + str(self.otherMethodsResults[2][0]) + "\n"  
+        # allResults += "RandomLB ReLU: value - " + str(self.otherMethodsResults[3][1]) + " timing - " + str(self.otherMethodsResults[3][0]) + "\n"  
+        # allResults += "SeqLip ReLU: value - " + str(self.otherMethodsResults[4][1]) + " timing - " + str(self.otherMethodsResults[4][0])
 
-        otherInfo += allResults
-        self.allResults = allResults
-        with open(path+"/otherInfo.txt", "w") as text_file:
-            text_file.write(otherInfo)
+        # otherInfo += allResults
+        # self.allResults = allResults
+        # with open(path+"/otherInfo.txt", "w") as text_file:
+        #     text_file.write(otherInfo)
         
     
     def intervalBisect_ReLU(self):

@@ -1,0 +1,361 @@
+###### 1
+r: 0.0000001
+
+interval Cpp:
+8588 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 330592500
+lipMIP ReLU: value - 0.041121020913124084 timing - 62620500
+ZLip ReLU: value - 0.041121020913124084 timing - 29869800
+CLEVER ReLU: value - 0.2815846800804138 timing - 1028747200
+FastLip ReLU: value - 0.041121020913124084 timing - 653700
+NaiveUB ReLU: value - 0.6921076774597168 timing - 91900
+RandomLB ReLU: value - 0.2815846800804138 timing - 130713800
+SeqLip ReLU: value - 0.2129872590303421 timing - 19238900
+
+
+interval Cpp:
+290 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 12723900
+lipMIP ReLU: value - 0.043334643114922855 timing - 9763800
+ZLip ReLU: value - 0.04333464428782463 timing - 2435600
+CLEVER ReLU: value - 0.04333464428782463 timing - 1031647700
+FastLip ReLU: value - 0.04333464428782463 timing - 649400
+NaiveUB ReLU: value - 0.7291175127029419 timing - 65200
+RandomLB ReLU: value - 0.04333464428782463 timing - 136161200
+SeqLip ReLU: value - 0.4503255784511566 timing - 530100
+
+
+interval Cpp:
+11451 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 501092200
+lipMIP ReLU: value - 0.043334643114922855 timing - 3782700
+ZLip ReLU: value - 0.04333464428782463 timing - 1260900
+CLEVER ReLU: value - 0.04333464428782463 timing - 1010110200
+FastLip ReLU: value - 0.04333464428782463 timing - 684200
+NaiveUB ReLU: value - 0.7291175127029419 timing - 65700
+RandomLB ReLU: value - 0.04333464428782463 timing - 134807200
+SeqLip ReLU: value - 0.4503255784511566 timing - 593600
+
+
+### 2
+r:0.000001
+
+interval Cpp:
+8388 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 338931300
+lipMIP ReLU: value - 0.32270769341688454 timing - 29083100
+ZLip ReLU: value - 0.3227056860923767 timing - 3826600
+CLEVER ReLU: value - 0.2815846800804138 timing - 1043614700
+FastLip ReLU: value - 0.3227056860923767 timing - 718500
+NaiveUB ReLU: value - 0.6921076774597168 timing - 102100
+RandomLB ReLU: value - 0.2815846800804138 timing - 140814300
+SeqLip ReLU: value - 0.2129872590303421 timing - 1912100
+
+
+interval Cpp:
+319 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 12970700
+lipMIP ReLU: value - 0.6144872999391078 timing - 3904700
+ZLip ReLU: value - 0.6144852638244629 timing - 1418400
+CLEVER ReLU: value - 0.5711506605148315 timing - 1033213800
+FastLip ReLU: value - 0.6144853234291077 timing - 657500
+NaiveUB ReLU: value - 0.7291175127029419 timing - 70800
+RandomLB ReLU: value - 0.5711506605148315 timing - 133506800
+SeqLip ReLU: value - 0.4503255784511566 timing - 549700
+
+
+interval Cpp:
+12201 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 492496800
+lipMIP ReLU: value - 0.6144872999391078 timing - 3371400
+ZLip ReLU: value - 0.6144852638244629 timing - 1437800
+CLEVER ReLU: value - 0.5711506605148315 timing - 1043764300
+FastLip ReLU: value - 0.6144853234291077 timing - 688500
+NaiveUB ReLU: value - 0.7291175127029419 timing - 70900
+RandomLB ReLU: value - 0.5711506605148315 timing - 140964300
+SeqLip ReLU: value - 0.4503255784511566 timing - 639500
+
+
+### 3
+r:0.000001
+
+interval Cpp:
+7852 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 329862800
+lipMIP ReLU: value - 0.32270769341688454 timing - 12200500
+ZLip ReLU: value - 0.3227056860923767 timing - 3806400
+CLEVER ReLU: value - 0.3227056860923767 timing - 1077415600
+FastLip ReLU: value - 0.3227056860923767 timing - 722300
+NaiveUB ReLU: value - 0.6921076774597168 timing - 93700
+RandomLB ReLU: value - 0.3227056860923767 timing - 139863900
+SeqLip ReLU: value - 0.2129872590303421 timing - 2054400
+
+
+interval Cpp:
+313 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 13270000
+lipMIP ReLU: value - 0.6144872999391079 timing - 4017500
+ZLip ReLU: value - 0.6144852638244629 timing - 1480700
+CLEVER ReLU: value - 0.5711506605148315 timing - 1030177100
+FastLip ReLU: value - 0.6144853234291077 timing - 650800
+NaiveUB ReLU: value - 0.7291175127029419 timing - 66600
+RandomLB ReLU: value - 0.5711506605148315 timing - 140253700
+SeqLip ReLU: value - 0.4503255784511566 timing - 597600
+
+
+interval Cpp:
+11385 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 499521100
+lipMIP ReLU: value - 0.6144872999391079 timing - 3323600
+ZLip ReLU: value - 0.6144852638244629 timing - 1399200
+CLEVER ReLU: value - 0.5711506605148315 timing - 1037345100
+FastLip ReLU: value - 0.6144853234291077 timing - 640200
+NaiveUB ReLU: value - 0.7291175127029419 timing - 64000
+RandomLB ReLU: value - 0.5711506605148315 timing - 138260200
+SeqLip ReLU: value - 0.4503255784511566 timing - 582900
+
+
+### 4
+r:0.0001
+
+interval Cpp:
+7790 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 333921700
+lipMIP ReLU: value - 0.32270769341688454 timing - 12878800
+ZLip ReLU: value - 0.3227056860923767 timing - 2997000
+CLEVER ReLU: value - 0.3227056860923767 timing - 1056010700
+FastLip ReLU: value - 0.3227056860923767 timing - 714700
+NaiveUB ReLU: value - 0.6921076774597168 timing - 94900
+RandomLB ReLU: value - 0.3227056860923767 timing - 140981200
+SeqLip ReLU: value - 0.2129872590303421 timing - 2347500
+
+
+interval Cpp:
+287 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 12991100
+lipMIP ReLU: value - 0.6144872999391079 timing - 3677100
+ZLip ReLU: value - 0.6144852638244629 timing - 1352900
+CLEVER ReLU: value - 0.6144853234291077 timing - 1075584000
+FastLip ReLU: value - 0.6144853234291077 timing - 668600
+NaiveUB ReLU: value - 0.7291175127029419 timing - 65200
+RandomLB ReLU: value - 0.6144853234291077 timing - 138674100
+SeqLip ReLU: value - 0.4503255784511566 timing - 607600
+
+
+interval Cpp:
+11380 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 500288000
+lipMIP ReLU: value - 0.6144872999391079 timing - 4301500
+ZLip ReLU: value - 0.6144852638244629 timing - 1539900
+CLEVER ReLU: value - 0.6144853234291077 timing - 1072005800
+FastLip ReLU: value - 0.6144853234291077 timing - 657200
+NaiveUB ReLU: value - 0.7291175127029419 timing - 65800
+RandomLB ReLU: value - 0.6144853234291077 timing - 134201500
+SeqLip ReLU: value - 0.4503255784511566 timing - 523900
+
+
+### 5
+r:0.001
+
+[interval([-4.833202221268015, -4.831202221268014]), interval([-7.365287590384274, -7.363287590384274])]
+interval Cpp:
+7943 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 336670400
+lipMIP ReLU: value - 0.32270769341688454 timing - 12511300
+ZLip ReLU: value - 0.3227056860923767 timing - 2986000
+CLEVER ReLU: value - 0.3227056860923767 timing - 1052614300
+FastLip ReLU: value - 0.3227056860923767 timing - 705200
+NaiveUB ReLU: value - 0.6921076774597168 timing - 84900
+RandomLB ReLU: value - 0.3227056860923767 timing - 143019000
+SeqLip ReLU: value - 0.2129872590303421 timing - 2394000
+
+
+[interval([-26.61654487492471, -26.614544874924707]), interval([-16.36861031598185, -16.36661031598185])]
+interval Cpp:
+283 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 13511400
+lipMIP ReLU: value - 0.6144872999391078 timing - 3374500
+ZLip ReLU: value - 0.6144852638244629 timing - 1630600
+CLEVER ReLU: value - 0.6144853234291077 timing - 1092790600
+FastLip ReLU: value - 0.6144853234291077 timing - 640000
+NaiveUB ReLU: value - 0.7291175127029419 timing - 62500
+RandomLB ReLU: value - 0.6144853234291077 timing - 141832700
+SeqLip ReLU: value - 0.4503255784511566 timing - 595900
+
+
+[interval([-26.61654487492471, -26.614544874924707]), interval([-16.36861031598185, -16.36661031598185])]
+interval Cpp:
+11539 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 512419300
+lipMIP ReLU: value - 0.6144872999391078 timing - 3707300
+ZLip ReLU: value - 0.6144852638244629 timing - 1387500
+CLEVER ReLU: value - 0.6144853234291077 timing - 1072074600
+FastLip ReLU: value - 0.6144853234291077 timing - 650700
+NaiveUB ReLU: value - 0.7291175127029419 timing - 61900
+RandomLB ReLU: value - 0.6144853234291077 timing - 136956800
+SeqLip ReLU: value - 0.4503255784511566 timing - 61770
+
+
+### 6
+r:0.01
+
+[interval([-4.842202221268014, -4.8222022212680145]), interval([-7.374287590384274, -7.354287590384274])]
+interval Cpp:
+8408 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 340957400
+lipMIP ReLU: value - 0.32270769341688454 timing - 13586700
+ZLip ReLU: value - 0.3227056860923767 timing - 3118000
+CLEVER ReLU: value - 0.3227056860923767 timing - 1215858700
+FastLip ReLU: value - 0.3227056860923767 timing - 797300
+NaiveUB ReLU: value - 0.6921076774597168 timing - 96100
+RandomLB ReLU: value - 0.3227056860923767 timing - 141425000
+SeqLip ReLU: value - 0.2129872590303421 timing - 2364500
+
+
+[interval([-26.62554487492471, -26.605544874924707]), interval([-16.37761031598185, -16.357610315981848])]
+interval Cpp:
+281 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 13242900
+lipMIP ReLU: value - 0.6144872999391078 timing - 3158200
+ZLip ReLU: value - 0.6144852638244629 timing - 1490800
+CLEVER ReLU: value - 0.6144853234291077 timing - 1165426800
+FastLip ReLU: value - 0.6144853234291077 timing - 701000
+NaiveUB ReLU: value - 0.7291175127029419 timing - 67800
+RandomLB ReLU: value - 0.6144853234291077 timing - 148371100
+SeqLip ReLU: value - 0.4503255784511566 timing - 742600
+
+
+[interval([-26.62554487492471, -26.605544874924707]), interval([-16.37761031598185, -16.357610315981848])]
+interval Cpp:
+11450 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 516705200
+lipMIP ReLU: value - 0.6144872999391078 timing - 3765400
+ZLip ReLU: value - 0.6144852638244629 timing - 1480800
+CLEVER ReLU: value - 0.6144853234291077 timing - 1134616200
+FastLip ReLU: value - 0.6144853234291077 timing - 703100
+NaiveUB ReLU: value - 0.7291175127029419 timing - 68200
+RandomLB ReLU: value - 0.6144853234291077 timing - 140035800
+SeqLip ReLU: value - 0.4503255784511566 timing - 752000
+
+
+### 7
+r:0.1
+
+[interval([-4.932202221268014, -4.732202221268015]), interval([-7.464287590384274, -7.264287590384274])]
+interval Cpp:
+8105 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 336766600
+lipMIP ReLU: value - 0.32270769341688454 timing - 14281800
+ZLip ReLU: value - 0.3227056860923767 timing - 2823900
+CLEVER ReLU: value - 0.3227056860923767 timing - 1066242700
+FastLip ReLU: value - 0.3227056860923767 timing - 748600
+NaiveUB ReLU: value - 0.6921076774597168 timing - 102100
+RandomLB ReLU: value - 0.3227056860923767 timing - 139714700
+SeqLip ReLU: value - 0.2129872590303421 timing - 2366000
+
+
+[interval([-26.71554487492471, -26.515544874924707]), interval([-16.46761031598185, -16.267610315981848])]
+interval Cpp:
+311 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 13153800
+lipMIP ReLU: value - 0.6144872999391078 timing - 3705300
+ZLip ReLU: value - 0.6144852638244629 timing - 1384800
+CLEVER ReLU: value - 0.6144853234291077 timing - 1020127100
+FastLip ReLU: value - 0.6144853234291077 timing - 663200
+NaiveUB ReLU: value - 0.7291175127029419 timing - 68900
+RandomLB ReLU: value - 0.6144853234291077 timing - 139118800
+SeqLip ReLU: value - 0.4503255784511566 timing - 668300
+
+
+[interval([-26.71554487492471, -26.515544874924707]), interval([-16.46761031598185, -16.267610315981848])]
+interval Cpp:
+11303 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 505872500
+lipMIP ReLU: value - 0.6144872999391078 timing - 4332900
+ZLip ReLU: value - 0.6144852638244629 timing - 1397700
+CLEVER ReLU: value - 0.6144853234291077 timing - 1007742600
+FastLip ReLU: value - 0.6144853234291077 timing - 659100
+NaiveUB ReLU: value - 0.7291175127029419 timing - 64800
+RandomLB ReLU: value - 0.6144853234291077 timing - 131592300
+SeqLip ReLU: value - 0.4503255784511566 timing - 556800
+
+### 8
+r:1
+
+[interval([-5.832202221268014, -3.8322022212680142]), interval([-8.364287590384274, -6.364287590384274])]
+interval Cpp:
+7923 microseconds
+Interval result: 0.322705690859059757, 0.322705690859059757
+/mnt/d/MyGit/tmp/Theoretic_Robustness_NN/OtherMethods/other_methods/seq_lip.py:31: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  c_vec = torch.tensor(self.c_vector).view(1, -1)
+interval ReLU: value - interval([0.32270569085905976]) timing - 338016300
+lipMIP ReLU: value - 0.32270769341688454 timing - 12291100
+ZLip ReLU: value - 0.3227056860923767 timing - 2840100
+CLEVER ReLU: value - 0.3227056860923767 timing - 1028833800
+FastLip ReLU: value - 0.3227056860923767 timing - 664500
+NaiveUB ReLU: value - 0.6921076774597168 timing - 81300
+RandomLB ReLU: value - 0.3227056860923767 timing - 138100100
+SeqLip ReLU: value - 0.2129872590303421 timing - 2037500
+
+
+[interval([-27.61554487492471, -25.61554487492471]), interval([-17.36761031598185, -15.36761031598185])]
+interval Cpp:
+277 microseconds
+Interval result: 0.571150659783544512, 0.614485302898467367
+interval ReLU: value - interval([0.5711506597835445, 0.6144853028984674]) timing - 13328400
+lipMIP ReLU: value - 0.6144872999391078 timing - 3445500
+ZLip ReLU: value - 0.6144852638244629 timing - 1405300
+CLEVER ReLU: value - 0.6144853234291077 timing - 1023118000
+FastLip ReLU: value - 0.6144853234291077 timing - 646000
+NaiveUB ReLU: value - 0.7291175127029419 timing - 65400
+RandomLB ReLU: value - 0.6144853234291077 timing - 136315400
+SeqLip ReLU: value - 0.4503255784511566 timing - 561300
+
+
+[interval([-27.61554487492471, -25.61554487492471]), interval([-17.36761031598185, -15.36761031598185])]
+interval Cpp:
+11222 microseconds
+Interval result: 0.614485302898467367, 0.614485302898467367
+interval ReLU: value - interval([0.6144853028984674]) timing - 501051200
+lipMIP ReLU: value - 0.6144872999391078 timing - 3506600
+ZLip ReLU: value - 0.6144852638244629 timing - 1430000
+CLEVER ReLU: value - 0.6144853234291077 timing - 1030313900
+FastLip ReLU: value - 0.6144853234291077 timing - 651700
+NaiveUB ReLU: value - 0.7291175127029419 timing - 83700
+RandomLB ReLU: value - 0.6144853234291077 timing - 138714900
+SeqLip ReLU: value - 0.4503255784511566 timing - 597500
