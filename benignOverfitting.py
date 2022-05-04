@@ -14,15 +14,18 @@ def plotFunction(x, y):
     plt.plot(x, y, color='black', linestyle='dashed', linewidth = 2,
              marker='o', markerfacecolor='red', markersize=11)
 
-def plotFunctionOut(x, y, fileName):
+def plotFunctionOut(x, y, fileName, nnSize):
     plt.ylim(-5,5)
     plt.xlim(-5,5)
+    plt.title(str(nnSize) + ' ReLU Neurons')
     plt.plot(x, y)
     plt.savefig(fileName)
     plt.close()
 
 def plotFunctionLip(x, y, fileName):
     plt.plot(x, y)
+    plt.xlabel('Capacity')
+    plt.ylabel('Lipschitz Constant')
     plt.savefig(fileName)
     plt.close()
 
@@ -46,26 +49,28 @@ def saveNetwork(network, networkName):
 
 def net(x, y, nnSize, fileName):
     layer_sizes = [1, nnSize, 1]
-    network = ReLUNet(layer_sizes=layer_sizes, bias=True, isSigmoid=False)
-    # train
-    x_train = torch.from_numpy(x).float()
-    y_train = torch.from_numpy(y).float()
-    criterion = nn.MSELoss()
-    optimizer = torch.optim.SGD(network.parameters(), lr=0.0001)
-    # tmp1 = tmp2 = 0
-    for epoch in range(300000):
-        out = network(x_train)
-        loss = criterion(out, y_train)
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
+    network = loadSavedNetwork(fileName)
+    # network = ReLUNet(layer_sizes=layer_sizes, bias=True, isSigmoid=False)
 
-        if epoch % 20000 == 0:
-            # tmp1 = tmp2
-            # tmp2 = loss.data
-            # if((tmp1 == loss.data) and (tmp2 == loss.data)):
-            #     break
-            print("epoch", epoch, "loss", loss.data)
+    # # train
+    # x_train = torch.from_numpy(x).float()
+    # y_train = torch.from_numpy(y).float()
+    # criterion = nn.MSELoss()
+    # optimizer = torch.optim.SGD(network.parameters(), lr=0.0001)
+    # # tmp1 = tmp2 = 0
+    # for epoch in range(300000):
+    #     out = network(x_train)
+    #     loss = criterion(out, y_train)
+    #     optimizer.zero_grad()
+    #     loss.backward()
+    #     optimizer.step()
+
+    #     if epoch % 20000 == 0:
+    #         # tmp1 = tmp2
+    #         # tmp2 = loss.data
+    #         # if((tmp1 == loss.data) and (tmp2 == loss.data)):
+    #         #     break
+    #         print("epoch", epoch, "loss", loss.data)
 
     # test
     x_out = np.reshape(np.linspace(-5., 5., 1000), (-1, 1))
@@ -73,8 +78,8 @@ def net(x, y, nnSize, fileName):
     y_test = network(x_test)
     y_out = torch.reshape(y_test, (-1,)).tolist()
     plotFunction(x_orginal, y_orginal)
-    plotFunctionOut(x_out, y_out, 'benign/imgs/' + fileName + '.png')
-    saveNetwork(network, fileName)
+    plotFunctionOut(x_out, y_out, 'benign/imgs/' + fileName + '.png', nnSize)
+    # saveNetwork(network, fileName)
 
 
 
@@ -98,7 +103,7 @@ for item in nnList:
     network = loadSavedNetwork(fileName)
     layer_sizes = [1, item, 1]
     tmp = intervalBisect_ReLU(layer_sizes, [0], network)
-    print(tmp)
+    # print(tmp)
     results.append(tmp[0][1])
 
 plotFunctionLip(nnList, results, 'benign/Lip.png')
