@@ -1,6 +1,7 @@
-from math import fabs
 from OtherMethods.lipMIP.relu_nets import ReLUNet
 from IntervalBisect.intervalBisect import IntervalBisect
+from OtherMethods.CLEVER import clever_modified
+from art.estimators.classification import PyTorchClassifier
 
 import matplotlib.pyplot as plt
 import torch
@@ -29,23 +30,44 @@ def plotFunctionLip(x, y, fileName):
     plt.savefig(fileName)
     plt.close()
 
-def intervalBisect_ReLU(layer_sizes, input, network):
+def plotTwoLines(x, y1, y2, fileName):
+    plt.plot(x, y1, label="lipDT")
+    plt.plot(x, y2, label="lipDT")
+    plt.legend()
+    plt.savefig(fileName)
+    plt.close()
+
+
+def intervalBisect_ReLU(layer_sizes, input, network, radius):
     stop_conditions = [1e-6, 20, 10000, 10] #[minGap, maxiteration, maxBoxes, maxSame]
     outputIndex=0
-    radius = [5, 0, 0] # [input, weight, bias]
     needBisect = True
     intervalResults = IntervalBisect(layer_sizes, input, outputIndex, radius, network, stop_conditions, needBisect)
     return intervalResults.compute_ReLU()
+
+def Clever(network, Nb, Ns, input, radius):
+    criterion = nn.MSELoss()
+    optimizer = torch.optim.SGD(network.parameters(), lr=0.0001)
+    classifier = PyTorchClassifier(
+        model=network.net,
+        loss=criterion,
+        optimizer=optimizer,
+        input_shape=(1, 1),
+        nb_classes=1,
+    )
+    pool_size = 2
+    result = clever_modified(classifier, np.array(input), Nb, Ns, radius[0], norm=np.inf, pool_factor=pool_size, outputIndex = 0)
+    return result
 
 def loadSavedNetwork(networkName):
     path = "benign/savedNN"
     return torch.load(path + "/" + networkName + ".pt")
 
-def saveNetwork(network, networkName):
-    path = "benign/savedNN"
+def saveNetwork(network, networkName, epoch):
+    path = "allBenign/savedNN/" + networkName
     if not os.path.exists(path):
         os.makedirs(path)
-    torch.save(network, path + "/" + networkName + ".pt")
+    torch.save(network, path + "/" + networkName + "_" + str(epoch) + ".pt")
 
 def net(x, y, nnSize, fileName):
     layer_sizes = [1, nnSize, 1]
@@ -56,16 +78,29 @@ def net(x, y, nnSize, fileName):
     x_train = torch.from_numpy(x).float()
     y_train = torch.from_numpy(y).float()
     criterion = nn.MSELoss()
-    optimizer = torch.optim.SGD(network.parameters(), lr=0.0001)
+    optimizer = torch.optim.Adam(network.parameters(), lr=0.0008)
     tmp1 = tmp2 = 0
-    for epoch in range(300000):
+    lipDTResults = []
+    cleverResults = []
+    radius = [5, 0, 0] #[input, weight, bias]
+    Nb = 20
+    Ns = 100
+    for epoch in range(2500):
         out = network(x_train)
         loss = criterion(out, y_train)
         optimizer.zero_grad()
         loss.backward()
         optimizer.step()
 
-        if epoch % 20000 == 0:
+        saveNetwork(network, fileName, epoch)
+        # lipDT = intervalBisect_ReLU(layer_sizes, [0], network, radius)[0][1]
+        # clever = Clever(network, Nb, Ns, [0], radius)
+        # lipDTResults.append(lipDT)
+        # cleverResults.append(clever)
+        # print("lipDT score is " + str(lipDT))
+        # print("clever score is " + str(clever))
+
+        if epoch % 20 == 0:
             tmp1 = tmp2
             tmp2 = loss.data
             if((tmp1 == loss.data) and (tmp2 == loss.data)):
@@ -73,13 +108,13 @@ def net(x, y, nnSize, fileName):
             print("epoch", epoch, "loss", loss.data)
 
     # test
-    x_out = np.reshape(np.linspace(-5., 5., 1000), (-1, 1))
-    x_test = torch.from_numpy(x_out).float()
-    y_test = network(x_test)
-    y_out = torch.reshape(y_test, (-1,)).tolist()
-    plotFunction(x_orginal, y_orginal)
-    plotFunctionOut(x_out, y_out, 'benign/imgs/' + fileName + '.png', nnSize)
-    # saveNetwork(network, fileName)
+    # x_out = np.reshape(np.linspace(-5., 5., 1000), (-1, 1))
+    # x_test = torch.from_numpy(x_out).float()
+    # y_test = network(x_test)
+    # y_out = torch.reshape(y_test, (-1,)).tolist()
+    # plotFunction(x_orginal, y_orginal)
+    # plotFunctionOut(x_out, y_out, 'benign/imgs/' + fileName + '.png', nnSize)
+    return lipDTResults, cleverResults
 
 
 
@@ -99,12 +134,14 @@ results = []
 
 for item in nnList:
     fileName = 'b' + str(item)
-    net(x, y, item, fileName)
+    lipDTResults, cleverResults = net(x, y, item, fileName)
+    # xArray = [i for i in range(len(lipDTResults))]
+    # plotTwoLines(xArray, lipDTResults, cleverResults, 'allBenign/'+fileName+'.png')
     # network = loadSavedNetwork(fileName)
-    layer_sizes = [1, item, 1]
-    tmp = intervalBisect_ReLU(layer_sizes, [0], network)
+    # layer_sizes = [1, item, 1]
+    # tmp = intervalBisect_ReLU(layer_sizes, [0], network)
     # print(tmp)
-    results.append(tmp[0][1])
+    # results.append(tmp[0][1])
 
-plotFunctionLip(nnList, results, 'benign/Lip.png')
+# plotFunctionLip(nnList, results, 'benign/Lip.png')
 
