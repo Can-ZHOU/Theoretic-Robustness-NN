@@ -92,7 +92,7 @@ def net(x, y, nnSize, fileName):
         loss.backward()
         optimizer.step()
 
-        saveNetwork(network, fileName, epoch)
+        # saveNetwork(network, fileName, epoch)
         # lipDT = intervalBisect_ReLU(layer_sizes, [0], network, radius)[0][1]
         # clever = Clever(network, Nb, Ns, [0], radius)
         # lipDTResults.append(lipDT)
